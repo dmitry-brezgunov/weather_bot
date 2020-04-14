@@ -27,7 +27,8 @@ def get_weather():
 @bot.message_handler(content_types=['text'])
 def get_text_messages(message):
     bot.send_message(message.from_user.id, f"Привет, сейчас я расскажу тебе погоду в Москве")
-    get_weather()
+    weather = get_weather()
+    bot.send_message(message.from_user.id, weather)
 
 while True:
     try:
