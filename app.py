@@ -22,7 +22,7 @@ def get_weather(place):
     params = {"appid": OPENWEATHER_TOKEN, "q": place, "lang": "ru", "units": "metric"}
     api_result = requests.get('http://api.openweathermap.org/data/2.5/weather', params)
     api_response = api_result.json()
-    if api_response['code'] == 404:
+    if api_response['cod'] == 404:
         return f'Извини, я не нашел такого города. Проверь, правильно ли введено название.'
     condition = api_response['weather']['description']
     temp = round(api_response['main']['temp'])
