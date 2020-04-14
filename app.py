@@ -24,7 +24,7 @@ def get_weather(place):
     api_response = api_result.json()
     if api_response['cod'] == 404:
         return f'Извини, я не нашел такого города. Проверь, правильно ли введено название.'
-    condition = api_response['weather']['description']
+    condition = api_response['weather'][0]['description']
     temp = round(api_response['main']['temp'])
     feel_temp = round(api_response['main']['feels_like'])
     pressure = api_response['main']['pressure']//133.3224*100
