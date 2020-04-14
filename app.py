@@ -19,10 +19,10 @@ def start(message):
     bot.send_message(message.from_user.id, greeting)
 
 def get_weather():
-    params = {"appid": "OPENWEATHER_TOKEN", "q": "Moscow", "lang": "ru", "units": "metric"}
+    params = {"appid": OPENWEATHER_TOKEN, "q": "Moscow", "lang": "ru", "units": "metric"}
     api_result = requests.get('http://api.openweathermap.org/data/2.5/weather', params)
     api_response = api_result.json()
-    return print(api_response)
+    return f"Сейчас в Москве {api_response['main']['temp']} градусов"
 
 @bot.message_handler(content_types=['text'])
 def get_text_messages(message):
