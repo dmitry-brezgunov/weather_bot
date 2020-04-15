@@ -65,6 +65,9 @@ def get_weather(message):
     if api_response['cod'] == "404":
         bot.send_message(message.from_user.id,
                          'Извини, я не нашел такого города. Проверь, правильно ли введено название.')
+    elif api_response['cod'] == "429":
+        bot.send_message(message.from_user.id,
+                         'Превышено максимальное количетсво запрос к API. Попробуйте позже.')
     else:
         forcast = weather_forcast(api_response)
         recomendation = weather_recomendations(api_response)
