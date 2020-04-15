@@ -32,19 +32,19 @@ def weather_forcast(api_response):
            f"Скорость ветра {wind} м/с."
 
 def weather_recomendations(api_response):
-    if api_response['weather']['id'] in [731, 751, 761, 762, 771, 781]:
+    if api_response['weather'][0]['id'] in [731, 751, 761, 762, 771, 781]:
         return "На улице ужасная погода, сиди дома."
     elif api_response['main']['temp'] < -20:
         return "На улице очень холодно. Может лучше остаться дома?"
-    elif api_response['weather']['id'] in [602, 613, 621, 622]:
+    elif api_response['weather'][0]['id'] in [602, 613, 621, 622]:
         return "На улице метель. Может лучше остаться дома?."
     elif api_response['main']['temp'] < 0:
         return "На улице холодно, одевайся теплее."
-    elif api_response['weather']['id'] in range(200, 233):
+    elif api_response['weather'][0]['id'] in range(200, 233):
         return "На улице гроза. Может лучше остаться дома?"
-    elif api_response['weather']['id'] in [502, 503, 504, 522, 531]:
+    elif api_response['weather'][0]['id'] in [502, 503, 504, 522, 531]:
         return "На улице ливень. Может лучше остаться дома?"
-    elif api_response['weather']['id'] in [500, 501, 520, 521]:
+    elif api_response['weather'][0]['id'] in [500, 501, 520, 521]:
         return "На улице дождь, не забудь взять зонт."
     elif api_response['main']['temp'] < 15:
         return "На улице прохладно, лучше надень куртку."
