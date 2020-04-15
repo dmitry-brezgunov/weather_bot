@@ -65,10 +65,11 @@ def get_weather(message):
     if api_response['cod'] == "404":
         bot.send_message(message.from_user.id,
                          'Извини, я не нашел такого города. Проверь, правильно ли введено название.')
-    forcast = weather_forcast(api_response)
-    recomendation = weather_recomendations(api_response)
-    bot.send_message(message.from_user.id, forcast)
-    bot.send_message(message.from_user.id, recomendation)
+    else:
+        forcast = weather_forcast(api_response)
+        recomendation = weather_recomendations(api_response)
+        bot.send_message(message.from_user.id, forcast)
+        bot.send_message(message.from_user.id, recomendation)
 
 while True:
     try:
