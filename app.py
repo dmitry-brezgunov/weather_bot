@@ -59,12 +59,12 @@ def weather_recomendations(api_response):
 
 @bot.message_handler(content_types=['text'])
 def get_weather(message):
-    params = {"appid": OPENWEATHER_TOKEN, "q": message.text, "lang": "ru", "units": "metric"}
+    city = message.text
+    params = {"appid": OPENWEATHER_TOKEN, "q": city, "lang": "ru", "units": "metric"}
     api_result = requests.get('http://api.openweathermap.org/data/2.5/weather', params)
     api_response = api_result.json()
-    weather_forcast = get_weather(api_response)
-    bot.send_message(message.from_user.id, weather_forcast)
-    bot.send_message(message.from_user.id, weather_recomendations)
+    bot.send_message(message.from_user.id, weather_forcast(api_response))
+    bot.send_message(message.from_user.id, weather_recomendations(api_response))
 
 while True:
     try:
