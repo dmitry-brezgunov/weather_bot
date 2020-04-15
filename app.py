@@ -48,9 +48,9 @@ def weather_recomendations(api_response):
         return "На улице дождь, не забудь взять зонт."
     elif api_response['main']['temp'] < 15:
         return "На улице прохладно, лучше надень куртку."
-    elif api_response['main']['temp'] < 25 and api_response['weather']['id'] in range(800, 805):
+    elif api_response['main']['temp'] < 25 and api_response['weather'][0]['id'] in range(800, 805):
         return "На улице хорошая погода, самое время для прогулки."
-    elif api_response['main']['temp'] < 35 and api_response['weather']['id'] == 800:
+    elif api_response['main']['temp'] < 35 and api_response['weather'][0]['id'] == 800:
         return "На улице жарко и солнечно, старайся держаться тени."
     elif api_response['main']['temp'] < 35:
         return "На улице жарко, можно надеть шорты."
